@@ -1,5 +1,6 @@
 # Stage 1: Builder
-FROM golang:1.22-bullseye AS builder
+#FROM golang:1.22-bullseye AS builder
+FROM golang:1.25 AS builder
 
 ARG GOLANGCI_LINT_VERSION=v1.60.1
 ARG GOSEC_VERSION=2.20.0
