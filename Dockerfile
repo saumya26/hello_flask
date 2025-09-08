@@ -23,7 +23,7 @@ RUN microdnf upgrade -y && \
     curl -sSfL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh \
       | sh -s -- -b /usr/local/bin && \
     \
-    RUN curl -sSfL https://raw.githubusercontent.com/securego/gosec/master/install.sh \
+    curl -sSfL https://raw.githubusercontent.com/securego/gosec/master/install.sh \
     | sh -s -- -b /usr/local/bin v2.20.0 
     \
     curl -sSL https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.15.0/openshift-client-linux-4.15.0.tar.gz \
