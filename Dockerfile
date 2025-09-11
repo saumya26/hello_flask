@@ -37,7 +37,7 @@ RUN microdnf upgrade -y && \
 #
 # Install Copywrite
 #
-    wget -q -c https://github.com/hashicorp/copywrite/releases/download/${COPYWRITE_VERSION}/copywrite_0.22.0_linux_x86_64.tar.gz -O - | sudo tar --overwrite -xz -C /usr/local/bin && \
+    wget -q -c https://github.com/hashicorp/copywrite/releases/download/v0.22.0/copywrite_0.22.0_linux_x86_64.tar.gz -O - | sudo tar --overwrite -xz -C /usr/local/bin && \
 #
 # Install Go
 #
