@@ -32,27 +32,12 @@ ARG OC_VERSION=4.19.0
 # Update packages and install dependencies
 #
 RUN microdnf upgrade -y && \
-    microdnf install -y wget gzip gcc sudo tar git make gpg findutils zip jq curl && \
+    microdnf install -y wget gzip gcc sudo tar git make gcc gpg findutils zip jq && \
     microdnf clean all && \
-#
-# Install Copywrite
-#
     wget -q -c https://github.com/hashicorp/copywrite/releases/download/v0.22.0/copywrite_0.22.0_linux_x86_64.tar.gz -O - | sudo tar --overwrite -xz -C /usr/local/bin && \
-#
-# Install Go
-#
     wget -q -c https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz -O - | sudo tar --overwrite -xz -C /usr/local && \
-#
-# Install Go Releaser
-#
     wget -q -c https://github.com/goreleaser/goreleaser/releases/download/${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz -O - | sudo tar --overwrite -xz -C /usr/local/bin && \
-#
-# Install Golangci-lint
-#
     curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin ${GOLANGCI_LINT_VERSION} && \
-#
-# Install tflint
-#
     curl -sSfL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | sh -s -- -b /usr/local/bin && \
 #
 # Install GoSec
