@@ -24,7 +24,7 @@ ARG COPYWRITE_VERSION=v0.22.0
 ARG GO_VERSION=1.24.7
 ARG GORELEASER_VERSION=v2.12.0
 ARG GOLANGCI_LINT_VERSION=v2.4.0
-ARG GOSEC_VERSION=v2.22.8
+ARG GOSEC_VERSION=v2.22.7
 ARG OC_VERSION=4.19.0
 
 
@@ -39,16 +39,8 @@ RUN microdnf upgrade -y && \
     wget -q -c https://github.com/goreleaser/goreleaser/releases/download/${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz -O - | sudo tar --overwrite -xz -C /usr/local/bin && \
     curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin ${GOLANGCI_LINT_VERSION} && \
     curl -sSfL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | sh -s -- -b /usr/local/bin && \
-#
-# Install GoSec
-#
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s -- -b $(go env GOPATH)/bin ${GOSEC_VERSION} && \ 
-#
-# Install OC CLI
-#
     curl -sSL https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/${OC_VERSION}/openshift-client-linux-4.15.0.tar.gz | tar -xz -C /usr/local/bin oc && \
-
-
     git clone https://github.com/bflad/tfproviderlint.git
 WORKDIR /tfproviderlint
 RUN go mod tidy && \
